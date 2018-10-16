@@ -35,18 +35,18 @@ bot.on('message', function (user, userID, channelID, message, id, evt) {
                     message: 'Pong!'
                 });
             break;
-            case 'pee': // Please ignore this uwuuuu
+            case 'pee':
                 bot.sendMessage({
                     to: channelID,
                     message: 'God I **LOVE** pee'
                 });
             case 'archive': {
-                bot.getMessages(callback, {
-                    // callback(),
-                    from: channelID,
-
+                let messageget = bot.getMessages(channelID, limit, (callback));
+                 messageget(500524976902766614, 10, (messageArray) => {
+                    if (messageArray) throw console.log('Message Array saved');
+                    console.log('Not!!!!');
                 });
-                fs.appendFileSync('Archive.txt', getMessages(messages), (err) => {
+                fs.appendFileSync('Archive.txt', messageArray, (err) => {
                     if (err) throw console.log('The file has not been saved');
                     console.log('The file has been saved!');
                     });
