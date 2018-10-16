@@ -41,12 +41,10 @@ bot.on('message', function (user, userID, channelID, message, id, evt) {
                     message: 'God I **LOVE** pee'
                 });
             case 'archive': {
-                let messageget = bot.getMessages(channelID, limit, (callback));
-                 messageget(500524976902766614, 10, (messageArray) => {
-                    if (messageArray) throw console.log('Message Array saved');
-                    console.log('Not!!!!');
-                });
-                fs.appendFileSync('Archive.txt', messageArray, (err) => {
+                let messageget = bot.getMessage(); 
+                messageget({channelID: channelID, limit: 50});
+
+                fs.appendFileSync('Archive.txt', Bugger.from(messageget), (err) => {
                     if (err) throw console.log('The file has not been saved');
                     console.log('The file has been saved!');
                     });
