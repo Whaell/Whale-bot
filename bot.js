@@ -44,7 +44,7 @@ bot.on('message', function (user, userID, channelID, message, id, evt) {
                 let messageget = bot.getMessage(); 
                 messageget({channelID: channelID, limit: 50});
 
-                fs.appendFileSync('Archive.txt', Bugger.from(messageget), (err) => {
+                fs.appendFileSync('Archive.txt', Buffer.from(messageget), (err) => {
                     if (err) throw console.log('The file has not been saved');
                     console.log('The file has been saved!');
                     });
